@@ -17,7 +17,7 @@ RUN mkdir /data
 
 RUN useradd -ms /bin/bash hikkadocker
 
-RUN git clone https://github.com/Lumihost/HikkaDocker /data/Hikka \
+RUN git clone -b docker https://github.com/Lumihost/HikkaDocker /data/Hikka \
     # && chmod -R a+rwx /data \
     && chown -R hikkadocker /data
 
