@@ -154,9 +154,7 @@ class HikkaInfoMod(loader.Module):
                 if self.config["banner_url"]
                 else {"message": self._render_info(True)}
             ),
-            "thumb": (
-                "https://github.com/hikariatama/Hikka/raw/master/assets/hikka_pfp.png"
-            ),
+            "thumb": ("https://github.com/Lumihost/HikkaDocker/raw/master/assets/hikka_pfp.png"),
             "reply_markup": self._get_mark(),
         }
 

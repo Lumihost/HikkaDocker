@@ -27,7 +27,7 @@ import contextlib
 import inspect
 import logging
 import os
-import subprocess
+import typing
 
 import aiohttp_jinja2
 import jinja2
@@ -74,7 +74,7 @@ class Web(root.Web):
             self.ready.set()
 
     async def get_url(self, proxy_pass: bool) -> str:
-        url = None
+        url: typing.Optional[str] = None
 
         if all(option in os.environ for option in {"LAVHOST", "USER", "SERVER"}):
             return f"https://{os.environ['USER']}.{os.environ['SERVER']}.lavhost.ml"
@@ -87,19 +87,15 @@ class Web(root.Web):
                 )
 
         if not url:
-            ip = (
-                "127.0.0.1"
-                if "DOCKER" not in os.environ
-                else subprocess.run(
-                    ["hostname", "-i"],
-                    stdout=subprocess.PIPE,
-                    check=True,
-                )
-                .stdout.decode("utf-8")
-                .strip()
-            )
+            url = f"http://127.0.0.1:{self.port}"
 
-            url = f"http://{ip}:{self.port}"
+            if all(
+                option in os.environ
+                for option in {"DOCKER", "DOCKER_HIKKA_ADDRESS", "DOCKER_HIKKA_PORT"}
+            ):
+                url = (
+                    f"http://{os.environ["DOCKER_HIKKA_ADDRESS"]}:{os.environ["DOCKER_HIKKA_PORT"]}"
+                )
 
         self.url = url
         return url

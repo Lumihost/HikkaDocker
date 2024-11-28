@@ -785,7 +785,7 @@ class Hikka:
                 "https://github.com/hikariatama/assets/raw/master/hikka_banner.mp4",
                 caption=(
                     "🌘 <b>Hikka {} started!</b>\n\n🌳 <b>GitHub commit SHA: <a"
-                    ' href="https://github.com/hikariatama/Hikka/commit/{}">{}</a></b>\n✊'
+                    ' href="https://github.com/Lumihost/HikkaDocker/commit/{}">{}</a></b>\n✊'
                     " <b>Update status: {}</b>\n<b>{}</b>".format(
                         ".".join(list(map(str, list(__version__)))),
                         build,
