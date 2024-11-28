@@ -94,7 +94,7 @@ class Web(root.Web):
                 for option in {"DOCKER", "DOCKER_HIKKA_ADDRESS", "DOCKER_HIKKA_PORT"}
             ):
                 url = (
-                    f"http://{os.environ["DOCKER_HIKKA_ADDRESS"]}:{os.environ["DOCKER_HIKKA_PORT"]}"
+                    f"http://{os.environ['DOCKER_HIKKA_ADDRESS']}:{os.environ['DOCKER_HIKKA_PORT']}"
                 )
 
         self.url = url
